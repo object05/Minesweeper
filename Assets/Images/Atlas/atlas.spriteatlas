@@ -26,7 +26,7 @@ SpriteAtlas:
       m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
-      m_TextureCompression: 2
+      m_TextureCompression: 1
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
@@ -35,7 +35,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 2
+      padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -43,12 +43,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 671e5aa5a385637408863c5b6764aa08, type: 3}
-    totalSpriteSurfaceArea: 382736
+    totalSpriteSurfaceArea: 410204
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: ad2bb7105448cb343927018acce50660, type: 3}
-  - {fileID: 21300000, guid: e1247870384932443b3f4871e8e20d84, type: 3}
   - {fileID: 21300000, guid: 375aaad1db9dbc64b9a2445f02231183, type: 3}
   - {fileID: 21300000, guid: 95dbaa13a897e0c41bacc2860b375ff7, type: 3}
   - {fileID: 21300000, guid: 0cb52f44ac82d9444a0a646e65b58b4d, type: 3}
@@ -59,7 +58,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2ca90c3708ed75f4ab996486bb3f218f, type: 3}
   - {fileID: 21300000, guid: d86640f75e49e3b42af9397550429295, type: 3}
   - {fileID: 21300000, guid: 71c902388abd67b4abab8c033a229f2f, type: 3}
-  - {fileID: 21300000, guid: e8fa5ab8b963cfb4ea85ded8af93a097, type: 3}
   - {fileID: 21300000, guid: d4735ee8c47b5404bbb8fcb1cf87ff46, type: 3}
   - {fileID: 21300000, guid: 1e18c03a7f540e74f9206d31a94bf5ca, type: 3}
   - {fileID: 21300000, guid: e8dea18aa593ca448af56fce3b1bf7c4, type: 3}
@@ -68,15 +66,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8286d1ab0956a864090f8a6637008918, type: 3}
   - {fileID: 21300000, guid: 3395dadbbb952cd4680298fa4ed2604a, type: 3}
   - {fileID: 21300000, guid: 4cbb867cb707b1346868b9a88f0c4ff5, type: 3}
+  - {fileID: 21300000, guid: 5f7304bc6fb5c3e4c9b5cfd44121a93c, type: 3}
   - {fileID: 21300000, guid: 830487bc982b8f843896e0b0927b6b6b, type: 3}
   - {fileID: 21300000, guid: b252e9dd843bbd044b6a9c3f6a2e1f49, type: 3}
   - {fileID: 21300000, guid: 6475507ec50e6a946a570c3d312b80a8, type: 3}
+  - {fileID: 21300000, guid: e3a0750f2d8d6b94d87ab974605c7599, type: 3}
   - {fileID: 21300000, guid: 9bcc9e0f90abe4f42a16182e42ce41d4, type: 3}
   - {fileID: 21300000, guid: 849b3c3f243ccb64597b3200e09f60c4, type: 3}
   - {fileID: 21300000, guid: fc46797f9efc0f34ab8cf36cae1529d9, type: 3}
   m_PackedSpriteNamesToIndex:
   - mine
-  - minecell_flag
   - mineb_5
   - mineb_2
   - smile_happy
@@ -87,7 +86,6 @@ SpriteAtlas:
   - smile_win
   - mineb_8
   - smile_scared
-  - minecelle
   - blackpx
   - mineb_0
   - minecell7
@@ -96,9 +94,11 @@ SpriteAtlas:
   - mineb_6
   - mineb_9
   - minecell5
+  - minecelle
   - mineb_1
   - mineb_7
   - mineb_4
+  - minecell_flag
   - minecell
   - minecell4
   - minecell1

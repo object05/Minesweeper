@@ -9,6 +9,9 @@ public class Assets : MonoBehaviour
     public SpriteAtlas atlas;
     public static Dictionary<string, Sprite> dictionary;
 
+    public static float cellWidth;
+    public static float cellHeight;
+
     void Awake()
     {
         DontDestroyOnLoad(this);
@@ -30,6 +33,8 @@ public class Assets : MonoBehaviour
         dictionary.Add(RegionNames.SMILE_SCARED, atlas.GetSprite(RegionNames.SMILE_SCARED));
         dictionary.Add(RegionNames.SMILE_WIN, atlas.GetSprite(RegionNames.SMILE_WIN));
 
+        cellWidth = dictionary[RegionNames.MINE].rect.width;
+        cellHeight = dictionary[RegionNames.MINE].rect.height;//be carefull that all have the same dimensions
     }
 
 

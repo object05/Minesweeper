@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
+
     public enum Cellstate
     {
         MINE_EMPTY=2<<0,
@@ -24,7 +25,7 @@ public class Mine : MonoBehaviour
 
     void Start()
     {
-        
+        gameObject.AddComponent<SpriteRenderer>();
     }
 
     void Update()
