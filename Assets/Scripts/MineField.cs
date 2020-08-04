@@ -24,10 +24,6 @@ public class MineField : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
 
     public void clearAndInit()
     {
