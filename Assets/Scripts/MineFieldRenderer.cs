@@ -6,14 +6,12 @@ public class MineFieldRenderer : MonoBehaviour
 {
     private MineField field;
 
-    // Start is called before the first frame update
     void Start()
     {
         field = gameObject.GetComponent<MineField>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         drawBoard();
@@ -21,20 +19,20 @@ public class MineFieldRenderer : MonoBehaviour
 
     void drawBoard()
     {
+        float heightHalfSize = Camera.main.orthographicSize;
+        float widthHalfSize = heightHalfSize * Camera.main.aspect;
+
+        //todo set cam to x , y * cellnum + HUDH
         for(int x = 0; x < field.width; x++)
         {
             for(int y = 0; y < field.height; y++)
             {
-                if(field == null)
-                {
-                    Debug.Log("field null");
-                }
-                if (field.minefield == null)
-                {
-                    Debug.Log("minefield null");
-                }
-                field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
-                field.minefield[x, y].gameObject.transform.position = new Vector3(x, y,5);
+                field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL1];
+                field.minefield[x, y].gameObject.transform.position = new Vector3(
+                    -widthHalfSize+ field.minefield[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.x / 2
+                    + x*field.minefield[x,y].GetComponent<SpriteRenderer>().sprite.bounds.size.x, 
+                    -heightHalfSize+ field.minefield[x, y].GetComponent<SpriteRenderer>().sprite.bounds.size.y / 2
+                    + y*field.minefield[x, y].GetComponent<SpriteRenderer>().bounds.size.y, 0);
             }
         }
     }
