@@ -25,6 +25,7 @@ public class Mine : MonoBehaviour
 
     void Awake()
     {
+        gameObject.AddComponent<BoxCollider2D>();
         gameObject.AddComponent<clickDetect>();
         gameObject.AddComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];

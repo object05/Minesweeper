@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
+    public static bool moving = false;
 
     public float zoomMin = 1;
     public float zoomMax = 10;
@@ -20,6 +21,7 @@ public class CameraController : MonoBehaviour
         }
         if(Input.touchCount == 2)
         {
+            moving = true;
             Touch touch1 = Input.GetTouch(0);
             Touch touch2 = Input.GetTouch(1);
 
@@ -32,11 +34,20 @@ public class CameraController : MonoBehaviour
             float diff = currMagnitude - prevMagnitude;
 
             zoom(diff * touchZoomSpeed);
+            moving = false;
         }
         else if (Input.GetMouseButton(0))
         {
             Vector3 direction = start - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
+            if(direction.x != 0 || direction.y != 0)
+            {
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
         }
         zoom(Input.GetAxis("Mouse ScrollWheel")* zoomSpeed);
     }

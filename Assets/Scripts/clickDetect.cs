@@ -3,8 +3,11 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class clickDetect : MonoBehaviour, IPointerDownHandler
+public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    private bool pressing = false;
+    private float start, end;
+
     void Start()
     {
         addPhysics2DRaycaster();
@@ -21,8 +24,23 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        start = Time.time;
     }
 
-    //Implement Other Events from Method 1
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (!CameraController.moving)
+        {
+            end = Time.time;
+            if (end - start > 0.5f)//long
+            {
+                Debug.Log("Long clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+
+            }
+            else//short
+            {
+                Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+            }
+        }
+    }
 }
