@@ -23,13 +23,11 @@ public class Mine : MonoBehaviour
 
     public Cellstate state;
 
-    void Start()
+    void Awake()
     {
+        gameObject.AddComponent<clickDetect>();
         gameObject.AddComponent<SpriteRenderer>();
+        gameObject.GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
     }
 
-    void Update()
-    {
-        
-    }
 }

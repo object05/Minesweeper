@@ -11,7 +11,7 @@ SpriteAtlas:
     serializedVersion: 2
     textureSettings:
       serializedVersion: 2
-      anisoLevel: 1
+      anisoLevel: 0
       compressionQuality: 50
       maxTextureSize: 2048
       textureCompression: 0
@@ -26,11 +26,23 @@ SpriteAtlas:
       m_MaxTextureSize: 1024
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
-      m_TextureCompression: 1
+      m_TextureCompression: 2
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -53,7 +65,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0cb52f44ac82d9444a0a646e65b58b4d, type: 3}
   - {fileID: 21300000, guid: d55210355ebb1ce4fbedcda065fe9d03, type: 3}
   - {fileID: 21300000, guid: 08596056662e1c7499290b2204fd1e69, type: 3}
-  - {fileID: 21300000, guid: dc7c2d763a3f9e74f85a3f9b05bebd7a, type: 3}
   - {fileID: 21300000, guid: ce55aae6ceb690a49bf9b89fa68e09c3, type: 3}
   - {fileID: 21300000, guid: 2ca90c3708ed75f4ab996486bb3f218f, type: 3}
   - {fileID: 21300000, guid: d86640f75e49e3b42af9397550429295, type: 3}
@@ -68,6 +79,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4cbb867cb707b1346868b9a88f0c4ff5, type: 3}
   - {fileID: 21300000, guid: 5f7304bc6fb5c3e4c9b5cfd44121a93c, type: 3}
   - {fileID: 21300000, guid: 830487bc982b8f843896e0b0927b6b6b, type: 3}
+  - {fileID: 21300000, guid: d1e938ad51943934e843338847655c30, type: 3}
   - {fileID: 21300000, guid: b252e9dd843bbd044b6a9c3f6a2e1f49, type: 3}
   - {fileID: 21300000, guid: 6475507ec50e6a946a570c3d312b80a8, type: 3}
   - {fileID: 21300000, guid: e3a0750f2d8d6b94d87ab974605c7599, type: 3}
@@ -81,7 +93,6 @@ SpriteAtlas:
   - smile_happy
   - minecell2
   - minecell8
-  - minecell3
   - mineb_3
   - smile_win
   - mineb_8
@@ -96,6 +107,7 @@ SpriteAtlas:
   - minecell5
   - minecelle
   - mineb_1
+  - minecell3
   - mineb_7
   - mineb_4
   - minecell_flag

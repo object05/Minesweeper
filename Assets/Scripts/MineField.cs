@@ -11,6 +11,8 @@ public class MineField : MonoBehaviour
     public int minesLeft;
     public GameObject[,] minefield;
 
+    public float unitDimension;
+
     void Start()
     {
         minefield = new GameObject[width,height];
