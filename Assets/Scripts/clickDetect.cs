@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private bool pressing = false;
     private float start, end;
 
     void Start()
@@ -35,6 +34,7 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (end - start > 0.5f)//long
             {
                 Debug.Log("Long clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+
 
             }
             else//short

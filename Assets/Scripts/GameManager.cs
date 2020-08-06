@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     // Start is called before the first frame update
-
-
     public enum GameState
     {
         BEGIN,RUNNING,END_WIN,END_LOSE
     }
     public GameState state;
 
-    void Start()
+
+    void Awake()
     {
-        
+        MakeSingleton();
     }
 
-    // Update is called once per frame
-    void Update()
+    void MakeSingleton()
     {
-        
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
+
 }

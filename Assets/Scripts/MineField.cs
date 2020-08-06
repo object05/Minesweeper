@@ -43,7 +43,7 @@ public class MineField : MonoBehaviour
         {
             for(int x = 0; x < width; x++)
             {
-                minefield[x, y].GetComponent<Mine>().state = Mine.Cellstate.MINE_EMPTY;
+                minefield[x, y].GetComponent<Mine>().state = Mine.MINE_EMPTY;
             }
         }
     }
@@ -55,9 +55,9 @@ public class MineField : MonoBehaviour
         {
             int x = Random.Range(0, width - 1);
             int y = Random.Range(0, height - 1);
-            if (minefield[x, y].GetComponent<Mine>().state != Mine.Cellstate.MINE)
+            if (minefield[x, y].GetComponent<Mine>().state != Mine.MINE)
             {
-                minefield[x, y].GetComponent<Mine>().state = Mine.Cellstate.MINE;
+                minefield[x, y].GetComponent<Mine>().state = Mine.MINE;
                 minesPlaced++;
             }
         }
@@ -68,9 +68,9 @@ public class MineField : MonoBehaviour
         {
             for(int x = 0; x < width; x++)
             {
-                if(minefield[x,y].GetComponent<Mine>().state != Mine.Cellstate.MINE)
+                if(minefield[x,y].GetComponent<Mine>().state != Mine.MINE)
                 {
-                    minefield[x, y].GetComponent<Mine>().state = (Mine.Cellstate)minesNear(x, y);
+                    minefield[x, y].GetComponent<Mine>().state = minesNear(x, y);
                 }
             }
         }
@@ -92,7 +92,7 @@ public class MineField : MonoBehaviour
 
     public int mineAt(int x, int y)
     {
-        if (y >= 0 && y < height && x >= 0 && x < width && minefield[x,y].GetComponent<Mine>().state == Mine.Cellstate.MINE)
+        if (y >= 0 && y < height && x >= 0 && x < width && minefield[x,y].GetComponent<Mine>().state == Mine.MINE)
         {
             return 1;
         }
@@ -101,4 +101,88 @@ public class MineField : MonoBehaviour
             return 0;
         }
     }
+
+    public bool markClick(GameObject obj)
+    {
+        if((obj.GetComponent<Mine>().state & Mine.CLICK_MARK) == Mine.CLICK_MARK)
+        {
+            obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state & ~Mine.CLICK_MARK;
+            minesLeft++;
+            return false;
+        }
+        else
+        {
+            obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state | Mine.CLICK_MARK;
+            minesLeft--;
+            return true;
+        }
+    }
+
+    public void clickAll()
+    {
+        for(int y = 0; y < height; y++)
+        {
+            for(int x = 0; x < width; x++)
+            {
+                minefield[x, y].GetComponent<Mine>().state = minefield[x, y].GetComponent<Mine>().state | Mine.CLICK_OPEN;
+            }
+        }
+    }
+
+    public void clickOne(int x, int y)
+    {
+        if (x == width) return;
+        if (x < 0) return;
+        if (y == height) return;
+        if (y < 0) return;
+        if ((minefield[x,y].GetComponent<Mine>().state & Mine.CLICK_OPEN) == Mine.CLICK_OPEN) return; //already clicked
+        if ((minefield[x,y].GetComponent<Mine>().state & Mine.CLICK_MARK) == Mine.CLICK_MARK) return; //position marked
+        if (minefield[x,y].GetComponent<Mine>().state == Mine.MINE) return; //it is a mine
+        minefield[x,y].GetComponent<Mine>().state = minefield[x,y].GetComponent<Mine>().state | Mine.CLICK_OPEN; //mark clicked
+        if ((minefield[x, y].GetComponent<Mine>().state & Mine.MINE_EMPTY) == Mine.MINE_EMPTY)
+        { //empty clear soround fields
+            clickOne(x - 1, y - 1);
+            clickOne(x + 1, y - 1);
+            clickOne(x - 1, y + 1);
+            clickOne(x + 1, y + 1);
+            clickOne(x - 1, y);
+            clickOne(x + 1, y);
+            clickOne(x, y - 1);
+            clickOne(x, y + 1);
+        }
+    }
+
+    public bool isWin()
+    {
+        return openMarked() == (width * height - mines);
+    }
+
+    public bool mineAt(GameObject obj)
+    {
+        if(obj.GetComponent<Mine>().state == Mine.MINE)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    int openMarked()
+    {
+        int sum = 0;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if ((minefield[x,y].GetComponent<Mine>().state & Mine.CLICK_OPEN) == Mine.CLICK_OPEN)
+                {
+                    sum++;
+                }
+            }
+        }
+        return sum;
+    }
+
 }
