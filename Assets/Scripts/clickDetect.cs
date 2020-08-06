@@ -7,6 +7,8 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private float start, end;
     private MineField minefield;
+    public static bool clicking = false;
+
 
     void Start()
     {
@@ -26,6 +28,14 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         start = Time.time;
+        if (!CameraController.moving)
+        {
+            clicking = true;
+        }
+        else
+        {
+            clicking = false;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -37,29 +47,14 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             if (end - start > 0.5f)//long
             {
                 Debug.Log("Long clicked: " + temp.name);
+                GameManager.instance.GetComponent<MineField>().longClick(temp);
             }
             else//short
             {
                 Debug.Log("Clicked: " + temp.name);
-                if((GameManager.instance.state == GameManager.GameState.END_WIN) || (GameManager.instance.state == GameManager.GameState.END_LOSE))
-                {
-                    return;
-                }
-                if(GameManager.instance.state == GameManager.GameState.BEGIN)
-                {
-                    GameManager.instance.state = GameManager.GameState.RUNNING;
-                }
-                if (minefield.mineAt(temp))
-                {
-                    minefield.clickAll();
-                    GameManager.instance.endGame();
-                }
-                minefield.clickOne(temp.GetComponent<Mine>().x, temp.GetComponent<Mine>().y);
-                if (minefield.isWin())
-                {
-                    GameManager.instance.endGame();
-                }
+                GameManager.instance.GetComponent<MineField>().normalClick(temp);
             }
         }
+        clicking = false;
     }
 }

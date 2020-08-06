@@ -11,6 +11,24 @@ public class HUD : MonoBehaviour
         status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
     }
 
+    void Update()
+    {
+        if(GameManager.instance.state == GameManager.GameState.END_LOSE)
+        {
+            status_image.sprite = Assets.dictionary[RegionNames.SMILE_DEAD];
+        }
+        else if (GameManager.instance.state == GameManager.GameState.END_WIN)
+        {
+            status_image.sprite = Assets.dictionary[RegionNames.SMILE_WIN];
+        }
+        else
+        {
+            status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
+        }
+
+
+    }
+
 
 
 

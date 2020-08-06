@@ -107,17 +107,24 @@ public class MineField : MonoBehaviour
 
     public bool markClick(GameObject obj)
     {
-        if((obj.GetComponent<Mine>().state & Mine.CLICK_MARK) == Mine.CLICK_MARK)
+        if (!((obj.GetComponent<Mine>().state & Mine.CLICK_OPEN) == Mine.CLICK_OPEN))
         {
-            obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state & ~Mine.CLICK_MARK;
-            minesLeft++;
-            return false;
+            if ((obj.GetComponent<Mine>().state & Mine.CLICK_MARK) == Mine.CLICK_MARK)
+            {
+                obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state & ~Mine.CLICK_MARK;
+                minesLeft++;
+                return false;
+            }
+            else
+            {
+                obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state | Mine.CLICK_MARK;
+                minesLeft--;
+                return true;
+            }
         }
         else
         {
-            obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state | Mine.CLICK_MARK;
-            minesLeft--;
-            return true;
+            return false;
         }
     }
 
@@ -186,6 +193,32 @@ public class MineField : MonoBehaviour
             }
         }
         return sum;
+    }
+
+    public void normalClick(GameObject o)
+    {
+        if ((GameManager.instance.state == GameManager.GameState.END_WIN) || (GameManager.instance.state == GameManager.GameState.END_LOSE))
+        {
+            return;
+        }
+        if (GameManager.instance.state == GameManager.GameState.BEGIN)
+        {
+            GameManager.instance.state = GameManager.GameState.RUNNING;
+        }
+        if (mineAt(o))
+        {
+            clickAll();
+            GameManager.instance.endGame();
+        }
+        clickOne(o.GetComponent<Mine>().x, o.GetComponent<Mine>().y);
+        if (isWin())
+        {
+            GameManager.instance.endGame();
+        }
+    }
+    public void longClick(GameObject o)
+    {
+        markClick(o);
     }
 
 }
