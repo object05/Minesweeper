@@ -8,6 +8,8 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float start, end;
     private MineField minefield;
     public static bool clicking = false;
+    private GameObject last;
+    private bool movedLast = false;
 
 
     void Start()
@@ -27,22 +29,18 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        last = eventData.pointerCurrentRaycast.gameObject;
+        movedLast = false;
+
         start = Time.time;
-        if (!CameraController.moving)
-        {
-            clicking = true;
-        }
-        else
-        {
-            clicking = false;
-        }
+        CameraController.logMove();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!CameraController.moving)
+        GameObject temp = eventData.pointerCurrentRaycast.gameObject;
+        if (!CameraController.moving && CameraController.moved == false)
         {
-            GameObject temp = eventData.pointerCurrentRaycast.gameObject;
             end = Time.time;
             if (end - start > 0.5f)//long
             {
@@ -55,6 +53,10 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 GameManager.instance.GetComponent<MineField>().normalClick(temp);
             }
         }
-        clicking = false;
+        if(CameraController.moved == true)
+        {
+            CameraController.moved = false;
+        }
+
     }
 }

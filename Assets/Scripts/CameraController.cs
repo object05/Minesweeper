@@ -6,12 +6,14 @@ public class CameraController : MonoBehaviour
 {
 
     public static bool moving = false;
+    public static bool moved = false;
 
     public float zoomMin = 1;
     public float zoomMax = 10;
     public float zoomSpeed = 5;
     public float touchZoomSpeed = 0.2f;
     Vector3 start;
+
 
     void Update()
     {
@@ -43,6 +45,7 @@ public class CameraController : MonoBehaviour
             if(direction.x != 0 || direction.y != 0)
             {
                 moving = true;
+                moved = true;
             }
             else
             {
@@ -55,5 +58,10 @@ public class CameraController : MonoBehaviour
     void zoom(float z)
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - z, zoomMin, zoomMax);
+    }
+
+    public static void logMove()
+    {
+        moved = false;
     }
 }
