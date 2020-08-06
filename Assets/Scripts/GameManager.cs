@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         MakeSingleton();
+        state = GameState.BEGIN;
     }
 
     void MakeSingleton()
@@ -28,6 +29,20 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public void endGame()
+    {
+        if (GetComponent<MineField>().isWin())
+        {
+            state = GameState.END_WIN;
+            //hud.setState(GameObjectSmileButton.STATE.WIN);
+        }
+        else
+        {
+            state = GameState.END_LOSE;
+            //hud.setState(GameObjectSmileButton.STATE.LOSE);
         }
     }
 

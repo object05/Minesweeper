@@ -23,8 +23,11 @@ public class MineField : MonoBehaviour
                 minefield[x, y] = new GameObject();
                 minefield[x, y].AddComponent<Mine>();
                 minefield[x, y].name = "Cell [" + x + "," + y + "]";
+                minefield[x, y].GetComponent<Mine>().x = x;
+                minefield[x, y].GetComponent<Mine>().y = y;
             }
         }
+        clearAndInit();
     }
 
 

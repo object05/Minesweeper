@@ -38,6 +38,8 @@ public class Mine : MonoBehaviour
     public const int CLICK_MARK = 2 << 11;
 
     public int state;
+    public int x;
+    public int y;
 
     void Awake()
     {
