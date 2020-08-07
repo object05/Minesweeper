@@ -5,12 +5,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class buttonClick : MonoBehaviour
+public class startClick : MonoBehaviour
 {
     public string sceneName;
     public InputField width;
     public InputField height;
     public InputField mines;
+
+    int w;
+    int h;
+    int m;
     // Start is called before the first frame update
     public void Start()
     {
@@ -20,14 +24,23 @@ public class buttonClick : MonoBehaviour
     // Update is called once per frame
     public void proceed()
     {
+        Debug.Log("clicked");
         if (width.GetComponent<textInput>().isGood || height.GetComponent<textInput>().isGood)
         {
-            if (mines.GetComponent<mineInput>().isGood && (Int32.Parse(mines.text) < (20 / 100) * Int32.Parse(width.text) * Int32.Parse(height.text)))
+            Int32.TryParse(mines.text, out m);
+            Int32.TryParse(width.text, out w);
+            Int32.TryParse(height.text, out h);
+
+            if (mines.GetComponent<mineInput>().isGood && (m <= (20f / 100f) * w * h))
             {
                 PlayerPrefs.SetInt("width", Int32.Parse(width.text));
                 PlayerPrefs.SetInt("height", Int32.Parse(height.text));
                 PlayerPrefs.SetInt("mines", Int32.Parse(mines.text));
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+            }
+            else
+            {
+                mines.GetComponent<InputField>().textComponent.color = Color.red;
             }
         }
 

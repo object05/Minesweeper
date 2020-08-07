@@ -9,7 +9,6 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private MineField minefield;
     public static bool clicking = false;
     private GameObject last;
-    private bool movedLast = false;
 
 
     void Start()
@@ -30,8 +29,6 @@ public class clickDetect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         last = eventData.pointerCurrentRaycast.gameObject;
-        movedLast = false;
-
         start = Time.time;
         CameraController.logMove();
     }

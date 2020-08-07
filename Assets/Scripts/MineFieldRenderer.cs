@@ -11,6 +11,11 @@ public class MineFieldRenderer : MonoBehaviour
 
     Vector2 tileDimensions;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
 
     void Start()
     {

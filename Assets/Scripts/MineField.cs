@@ -24,6 +24,7 @@ public class MineField : MonoBehaviour
             for(int x = 0; x < width; x++)
             {
                 minefield[x, y] = new GameObject();
+                minefield[x, y].AddComponent<DontDestroy>();
                 minefield[x, y].AddComponent<Mine>();
                 minefield[x, y].name = "Cell [" + x + "," + y + "]";
                 minefield[x, y].GetComponent<Mine>().x = x;

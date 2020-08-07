@@ -8,7 +8,9 @@ public class HUD : MonoBehaviour
     public Image status_image;
     void Start()
     {
+        //status_image.GetComponent<Button>().onClick.AddListener(delegate { pause(); });
         status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
+        DontDestroyOnLoad(status_image);
     }
 
     void Update()
@@ -25,8 +27,11 @@ public class HUD : MonoBehaviour
         {
             status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
         }
+    }
 
-
+    void pause()
+    {
+        status_image.GetComponent<sceneSwitcher>().proceed();
     }
 
 

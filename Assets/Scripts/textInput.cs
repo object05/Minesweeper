@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class textInput : MonoBehaviour
 {
-    public bool isGood = false;
+    public bool isGood;
 
     public void Start()
     {
         gameObject.GetComponent<InputField>().onValueChanged.AddListener(delegate { check(); });
+        isGood = true;
     }
 
     public void check()
