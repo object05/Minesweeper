@@ -15,6 +15,9 @@ public class MineField : MonoBehaviour
 
     void Start()
     {
+        mines = PlayerPrefs.GetInt("mines");
+        width = PlayerPrefs.GetInt("width");
+        height = PlayerPrefs.GetInt("height");
         minefield = new GameObject[width,height];
         for(int y = 0; y < height; y++)
         {
