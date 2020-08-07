@@ -14,7 +14,6 @@ public class Assets : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
         dictionary = new Dictionary<string, Sprite>();
         dictionary.Add(RegionNames.MINE, atlas.GetSprite(RegionNames.MINE));
         dictionary.Add(RegionNames.MINECELL, atlas.GetSprite(RegionNames.MINECELL));
@@ -32,6 +31,8 @@ public class Assets : MonoBehaviour
         dictionary.Add(RegionNames.SMILE_HAPPY, atlas.GetSprite(RegionNames.SMILE_HAPPY));
         dictionary.Add(RegionNames.SMILE_SCARED, atlas.GetSprite(RegionNames.SMILE_SCARED));
         dictionary.Add(RegionNames.SMILE_WIN, atlas.GetSprite(RegionNames.SMILE_WIN));
+        DontDestroyOnLoad(this);
+
     }
 
 

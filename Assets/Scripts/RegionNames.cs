@@ -23,4 +23,8 @@ public class RegionNames : MonoBehaviour
     public const string SMILE_WIN = "smile_win";
 
 
+   void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 }

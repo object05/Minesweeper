@@ -6,11 +6,21 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public Image status_image;
+    public Text clock;
+    float last;
+    float elapsed;
+
     void Start()
     {
+        elapsed = 0;
+        last = Time.time;
         //status_image.GetComponent<Button>().onClick.AddListener(delegate { pause(); });
         status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
-        DontDestroyOnLoad(status_image);
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     void Update()
@@ -27,6 +37,13 @@ public class HUD : MonoBehaviour
         {
             status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
         }
+        if(Time.time > last + 1f)
+        {
+            elapsed++;
+            clock.text = elapsed.ToString();
+            last = Time.time;
+        }
+
     }
 
     void pause()

@@ -13,6 +13,7 @@ public class MineField : MonoBehaviour
 
     public float unitDimension;
 
+
     void Start()
     {
         mines = PlayerPrefs.GetInt("mines");

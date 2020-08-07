@@ -12,6 +12,9 @@ public class startClick : MonoBehaviour
     public InputField height;
     public InputField mines;
 
+    public GameObject parent;
+    public GameObject CanvasToShow;
+
     int w;
     int h;
     int m;
@@ -24,7 +27,6 @@ public class startClick : MonoBehaviour
     // Update is called once per frame
     public void proceed()
     {
-        Debug.Log("clicked");
         if (width.GetComponent<textInput>().isGood || height.GetComponent<textInput>().isGood)
         {
             Int32.TryParse(mines.text, out m);
@@ -36,7 +38,7 @@ public class startClick : MonoBehaviour
                 PlayerPrefs.SetInt("width", Int32.Parse(width.text));
                 PlayerPrefs.SetInt("height", Int32.Parse(height.text));
                 PlayerPrefs.SetInt("mines", Int32.Parse(mines.text));
-                SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+                SceneManager.LoadScene(sceneName);
             }
             else
             {
