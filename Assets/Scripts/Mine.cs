@@ -45,6 +45,7 @@ public class Mine : MonoBehaviour
     {
         gameObject.AddComponent<BoxCollider2D>();
         gameObject.AddComponent<clickDetect>();
+        gameObject.tag = "Cell";
         gameObject.AddComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
         //DontDestroyOnLoad(this);

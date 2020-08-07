@@ -24,7 +24,7 @@ public class MineField : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 minefield[x, y] = new GameObject();
-                minefield[x, y].AddComponent<DontDestroy>();
+                //minefield[x, y].AddComponent<DontDestroy>();
                 minefield[x, y].AddComponent<Mine>();
                 minefield[x, y].name = "Cell [" + x + "," + y + "]";
                 minefield[x, y].GetComponent<Mine>().x = x;
@@ -56,7 +56,17 @@ public class MineField : MonoBehaviour
         //clearAndInit();
     }
 
-
+    public void DestroyAll()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Destroy(minefield[x, y]);
+            }
+        }
+        minefield = null;
+    }
     public void clearAndInit()
     {
         minesLeft = mines;

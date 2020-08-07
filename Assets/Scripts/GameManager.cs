@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public enum GameState
     {
-        BEGIN,RUNNING,END_WIN,END_LOSE
+        BEGIN,RUNNING,END_WIN,END_LOSE,PAUSE
     }
     public GameState state;
 

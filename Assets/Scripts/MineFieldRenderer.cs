@@ -16,33 +16,16 @@ public class MineFieldRenderer : MonoBehaviour
     {
         started = true;
         field = gameObject.GetComponent<MineField>();
+        if(field.minefield != null)//to clear previous cells if any
+        {
+            field.DestroyAll();
+        }
         field.beginGame();
-
-
         heightHalfSize = Camera.main.orthographicSize;
         widthHalfSize = heightHalfSize * Camera.main.aspect;
-
-        //drawBoard();
         tileDimensions = getTileDimension();
-
         adjustCamera();
         drawBoard();
-
-    }
-    void Start()
-    {
-        //field = gameObject.GetComponent<MineField>();
-
-
-        //heightHalfSize = Camera.main.orthographicSize;
-        //widthHalfSize = heightHalfSize * Camera.main.aspect;
-
-        ////drawBoard();
-        //tileDimensions = getTileDimension();
-
-        //adjustCamera();
-        //drawBoard();
-
     }
 
     void adjustCamera()
@@ -63,8 +46,6 @@ public class MineFieldRenderer : MonoBehaviour
             Camera.main.orthographicSize += 0.1f;
         }
         //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
-
-
     }
     
     Vector2 getTileDimension()//position 0,0 tile dimension

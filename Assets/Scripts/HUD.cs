@@ -18,10 +18,10 @@ public class HUD : MonoBehaviour
         status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
     }
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(this);
+    //}
 
     void Update()
     {
