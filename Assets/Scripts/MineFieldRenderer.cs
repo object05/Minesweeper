@@ -5,16 +5,18 @@ using UnityEngine;
 public class MineFieldRenderer : MonoBehaviour
 {
     private MineField field;
+    public bool started = false;
 
     float heightHalfSize;
     float widthHalfSize;
 
     Vector2 tileDimensions;
 
-
-    void Start()
+    public void beginGame()
     {
+        started = true;
         field = gameObject.GetComponent<MineField>();
+        field.beginGame();
 
 
         heightHalfSize = Camera.main.orthographicSize;
@@ -25,6 +27,21 @@ public class MineFieldRenderer : MonoBehaviour
 
         adjustCamera();
         drawBoard();
+
+    }
+    void Start()
+    {
+        //field = gameObject.GetComponent<MineField>();
+
+
+        //heightHalfSize = Camera.main.orthographicSize;
+        //widthHalfSize = heightHalfSize * Camera.main.aspect;
+
+        ////drawBoard();
+        //tileDimensions = getTileDimension();
+
+        //adjustCamera();
+        //drawBoard();
 
     }
 
@@ -57,7 +74,10 @@ public class MineFieldRenderer : MonoBehaviour
 
     void Update()
     {
-        updateBoard();
+        if (started)
+        {
+            updateBoard();
+        }
     }
 
     void updateBoard()

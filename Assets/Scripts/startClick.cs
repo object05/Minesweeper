@@ -38,7 +38,10 @@ public class startClick : MonoBehaviour
                 PlayerPrefs.SetInt("width", Int32.Parse(width.text));
                 PlayerPrefs.SetInt("height", Int32.Parse(height.text));
                 PlayerPrefs.SetInt("mines", Int32.Parse(mines.text));
-                SceneManager.LoadScene(sceneName);
+                //SceneManager.LoadScene(sceneName);
+                parent.SetActive(false);
+                CanvasToShow.SetActive(true);//gui
+                GameManager.instance.GetComponent<MineFieldRenderer>().beginGame();
             }
             else
             {

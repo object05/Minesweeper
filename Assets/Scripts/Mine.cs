@@ -47,7 +47,7 @@ public class Mine : MonoBehaviour
         gameObject.AddComponent<clickDetect>();
         gameObject.AddComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
     }
 

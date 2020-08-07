@@ -13,16 +13,15 @@ public class MineField : MonoBehaviour
 
     public float unitDimension;
 
-
-    void Start()
+    public void beginGame()
     {
         mines = PlayerPrefs.GetInt("mines");
         width = PlayerPrefs.GetInt("width");
         height = PlayerPrefs.GetInt("height");
-        minefield = new GameObject[width,height];
-        for(int y = 0; y < height; y++)
+        minefield = new GameObject[width, height];
+        for (int y = 0; y < height; y++)
         {
-            for(int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++)
             {
                 minefield[x, y] = new GameObject();
                 minefield[x, y].AddComponent<DontDestroy>();
@@ -33,6 +32,28 @@ public class MineField : MonoBehaviour
             }
         }
         clearAndInit();
+    }
+
+
+    void Start()
+    {
+        //mines = PlayerPrefs.GetInt("mines");
+        //width = PlayerPrefs.GetInt("width");
+        //height = PlayerPrefs.GetInt("height");
+        //minefield = new GameObject[width,height];
+        //for(int y = 0; y < height; y++)
+        //{
+        //    for(int x = 0; x < width; x++)
+        //    {
+        //        minefield[x, y] = new GameObject();
+        //        minefield[x, y].AddComponent<DontDestroy>();
+        //        minefield[x, y].AddComponent<Mine>();
+        //        minefield[x, y].name = "Cell [" + x + "," + y + "]";
+        //        minefield[x, y].GetComponent<Mine>().x = x;
+        //        minefield[x, y].GetComponent<Mine>().y = y;
+        //    }
+        //}
+        //clearAndInit();
     }
 
 
