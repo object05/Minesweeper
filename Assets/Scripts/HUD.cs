@@ -8,8 +8,8 @@ public class HUD : MonoBehaviour
     public Image status_image;
     public Text clock;
     float last;
-    float elapsed;
-    int points;
+    public float elapsed;
+    public int points;
 
     void Start()
     {

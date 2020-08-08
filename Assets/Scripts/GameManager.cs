@@ -38,13 +38,15 @@ public class GameManager : MonoBehaviour
         {
             state = GameState.END_WIN;
             Debug.Log("WIN");
-            //hud.setState(GameObjectSmileButton.STATE.WIN);
+            HUD temp = GameManager.instance.GetComponent<HUD>();
+            HighscoreTable.AddHighscoreEntry((int)temp.elapsed, 
+                PlayerPrefs.GetString("name"), 
+                PlayerPrefs.GetInt("width") + "x" + PlayerPrefs.GetInt("height") + "_" + PlayerPrefs.GetInt("mines"));
         }
         else
         {
             Debug.Log("LOSE");
             state = GameState.END_LOSE;
-            //hud.setState(GameObjectSmileButton.STATE.LOSE);
         }
     }
 
