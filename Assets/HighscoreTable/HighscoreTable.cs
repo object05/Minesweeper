@@ -21,7 +21,7 @@ public class HighscoreTable : MonoBehaviour {
         if (highscores == null) {
             // There's no stored table, initialize
             Debug.Log("Initializing table with default values...");
-            AddHighscoreEntry(66, "Alan", "8x12,10");
+            AddHighscoreEntry(66, "Alan", "8x12_10");
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
@@ -36,7 +36,7 @@ public class HighscoreTable : MonoBehaviour {
     }
 
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList) {
-        float templateHeight = 31f;
+        float templateHeight = 74f;
         Transform entryTransform = Instantiate(entryTemplate, container);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);

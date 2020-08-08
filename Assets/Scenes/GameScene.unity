@@ -1848,8 +1848,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 176, y: 66.58298}
-  m_SizeDelta: {x: 190.05203, y: 51.968307}
+  m_AnchoredPosition: {x: 174.2, y: 55.19}
+  m_SizeDelta: {x: 186.54825, y: 74.75489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427215489
 MonoBehaviour:
@@ -1877,7 +1877,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 56
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2655,7 +2655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &785358693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,8 +3955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.7, y: 66.583}
-  m_SizeDelta: {x: 210.69308, y: 51.968506}
+  m_AnchoredPosition: {x: -47.036, y: 55.19}
+  m_SizeDelta: {x: 256.02054, y: 74.75537}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1443998618
 MonoBehaviour:
@@ -3984,7 +3984,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 45
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4256,6 +4256,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status_image: {fileID: 82769432}
   clock: {fileID: 286809677}
+  elapsed: 0
+  points: 0
 --- !u!114 &1541392900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4437,8 +4439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317.8, y: 66.6}
-  m_SizeDelta: {x: 200.37256, y: 52.002197}
+  m_AnchoredPosition: {x: -296.52, y: 55.2}
+  m_SizeDelta: {x: 242.93973, y: 74.77576}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603494600
 MonoBehaviour:
@@ -4466,7 +4468,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 49
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4885,7 +4887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1779198545
 MonoBehaviour:
   m_ObjectHideFlags: 0
