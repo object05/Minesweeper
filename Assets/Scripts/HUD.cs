@@ -9,10 +9,12 @@ public class HUD : MonoBehaviour
     public Text clock;
     float last;
     float elapsed;
+    int points;
 
     void Start()
     {
         elapsed = 0;
+        points = 0;
         last = Time.time;
         //status_image.GetComponent<Button>().onClick.AddListener(delegate { pause(); });
         status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
@@ -25,6 +27,12 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.state == GameManager.GameState.BEGIN)
+        {
+            elapsed = 0;
+            points = 0;
+        }
+
         if(GameManager.instance.state == GameManager.GameState.END_LOSE)
         {
             status_image.sprite = Assets.dictionary[RegionNames.SMILE_DEAD];
@@ -36,12 +44,16 @@ public class HUD : MonoBehaviour
         else
         {
             status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
-        }
-        if(Time.time > last + 1f)
-        {
-            elapsed++;
-            clock.text = elapsed.ToString();
-            last = Time.time;
+            if (GameManager.instance.state == GameManager.GameState.RUNNING)
+            {
+                if (Time.time > last + 1f)
+                {
+                    elapsed++;
+                    clock.text = elapsed.ToString();
+                    last = Time.time;
+                }
+            }
+
         }
 
     }

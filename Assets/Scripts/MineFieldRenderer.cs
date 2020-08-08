@@ -55,7 +55,7 @@ public class MineFieldRenderer : MonoBehaviour
 
     void Update()
     {
-        if (started)
+        if (started && GameManager.instance.state != GameManager.GameState.PAUSE)
         {
             updateBoard();
         }

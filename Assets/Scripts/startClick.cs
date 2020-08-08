@@ -11,6 +11,7 @@ public class startClick : MonoBehaviour
     public InputField width;
     public InputField height;
     public InputField mines;
+    public InputField name;
 
     public GameObject parent;
     public GameObject CanvasToShow;
@@ -35,6 +36,9 @@ public class startClick : MonoBehaviour
 
             if (mines.GetComponent<mineInput>().isGood && (m <= (20f / 100f) * w * h))
             {
+                GameManager.instance.state = GameManager.GameState.BEGIN;
+
+                PlayerPrefs.SetString("name", name.text);
                 PlayerPrefs.SetInt("width", Int32.Parse(width.text));
                 PlayerPrefs.SetInt("height", Int32.Parse(height.text));
                 PlayerPrefs.SetInt("mines", Int32.Parse(mines.text));
@@ -42,6 +46,7 @@ public class startClick : MonoBehaviour
                 parent.SetActive(false);
                 CanvasToShow.SetActive(true);//gui
                 GameManager.instance.GetComponent<MineFieldRenderer>().beginGame();
+
             }
             else
             {

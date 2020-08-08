@@ -37,10 +37,12 @@ public class GameManager : MonoBehaviour
         if (GetComponent<MineField>().isWin())
         {
             state = GameState.END_WIN;
+            Debug.Log("WIN");
             //hud.setState(GameObjectSmileButton.STATE.WIN);
         }
         else
         {
+            Debug.Log("LOSE");
             state = GameState.END_LOSE;
             //hud.setState(GameObjectSmileButton.STATE.LOSE);
         }

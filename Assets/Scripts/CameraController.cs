@@ -14,9 +14,12 @@ public class CameraController : MonoBehaviour
     public float touchZoomSpeed = 0.2f;
     Vector3 start;
 
-
     void Update()
     {
+        if(GameManager.instance.state == GameManager.GameState.PAUSE)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             start = Camera.main.ScreenToWorldPoint(Input.mousePosition);
