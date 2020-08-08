@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
@@ -43,6 +44,8 @@ public class Mine : MonoBehaviour
 
     void Awake()
     {
+        gameObject.AddComponent<Animation>();
+        gameObject.GetComponent<Animation>().clip = Assets.explosion;
         gameObject.AddComponent<BoxCollider2D>();
         gameObject.AddComponent<clickDetect>();
         gameObject.tag = "Cell";

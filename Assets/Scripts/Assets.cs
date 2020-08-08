@@ -8,12 +8,22 @@ public class Assets : MonoBehaviour
 {
     public SpriteAtlas atlas;
     public static Dictionary<string, Sprite> dictionary;
+    public Animation exp_animation;
+
+    public static AnimationClip explosion;
 
     public static float cellWidth;
     public static float cellHeight;
 
     void Awake()
     {
+
+        //foreach (AnimationState state in exp_animation)
+        //{
+        //    state.speed = 0.5F;
+        //}
+        //explosion = exp_animation.clip;
+
         dictionary = new Dictionary<string, Sprite>();
         dictionary.Add(RegionNames.MINE, atlas.GetSprite(RegionNames.MINE));
         dictionary.Add(RegionNames.MINECELL, atlas.GetSprite(RegionNames.MINECELL));
@@ -31,6 +41,7 @@ public class Assets : MonoBehaviour
         dictionary.Add(RegionNames.SMILE_HAPPY, atlas.GetSprite(RegionNames.SMILE_HAPPY));
         dictionary.Add(RegionNames.SMILE_SCARED, atlas.GetSprite(RegionNames.SMILE_SCARED));
         dictionary.Add(RegionNames.SMILE_WIN, atlas.GetSprite(RegionNames.SMILE_WIN));
+
 
     }
 

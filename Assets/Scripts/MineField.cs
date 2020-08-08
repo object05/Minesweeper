@@ -207,6 +207,7 @@ public class MineField : MonoBehaviour
     {
         if(obj.GetComponent<Mine>().state == Mine.MINE)
         {
+            obj.GetComponent<Animation>().Play();
             return true;
         }
         else
