@@ -207,7 +207,8 @@ public class MineField : MonoBehaviour
     {
         if(obj.GetComponent<Mine>().state == Mine.MINE)
         {
-            obj.GetComponent<Animation>().Play();
+            obj.GetComponent<Animator>().Play(0);
+            Debug.LogWarning("MINE FOUND");
             return true;
         }
         else

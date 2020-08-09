@@ -70,31 +70,31 @@ public class MineFieldRenderer : MonoBehaviour
                 switch (field.minefield[x, y].GetComponent<Mine>().state)
                 {
                     case Mine.CLICK_OPEN + Mine.MINE_EMPTY:
-                        field.minefield[x,y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL_EMPTY];
+                        field.minefield[x,y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL_EMPTY];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_1:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL1];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL1];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_2:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL2];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL2];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_3:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL3];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL3];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_4:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL4];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL4];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_5:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL5];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL5];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_6:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL6];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL6];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_7:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL7];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL7];
                         continue;
                     case Mine.CLICK_OPEN + Mine.MINE_NEAR_8:
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL8];
+                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL8];
                         continue;
 
                 }
@@ -102,18 +102,27 @@ public class MineFieldRenderer : MonoBehaviour
                 {
                     if ((field.minefield[x, y].GetComponent<Mine>().state & Mine.MINE) == Mine.MINE)
                     {
-                        field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINE];//TODO PLAY EXPLOSION AND SOUND HERE
-                        continue;
+                        if(!isPlaying(field.minefield[x,y].GetComponent<Animator>()))
+                        {
+                            field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINE];//TODO PLAY EXPLOSION AND SOUND HERE
+                            continue;
+                        }
+                        else
+                        {
+                            field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = null;//TODO PLAY EXPLOSION AND SOUND HERE
+                            continue;
+                        }
+                        //else?
                     }
                 }
 
                 if((field.minefield[x,y].GetComponent<Mine>().state & Mine.CLICK_MARK) == Mine.CLICK_MARK)
                 {
-                    field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL_FLAG];
+                    field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL_FLAG];
                 }
                 else
                 {
-                    field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
+                    field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL];
                 }
             }
         }
@@ -135,6 +144,11 @@ public class MineFieldRenderer : MonoBehaviour
                     + y*field.minefield[x, y].GetComponent<SpriteRenderer>().bounds.size.y, 0);
             }
         }
+    }
+    bool isPlaying(Animator animator)
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length >
+               animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
     }
 
 

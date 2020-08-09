@@ -1,28 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class Assets : MonoBehaviour
 {
+    public static Assets instance;
+
+
+
     public SpriteAtlas atlas;
-    public static Dictionary<string, Sprite> dictionary;
-    public Animation exp_animation;
+    public Dictionary<string, Sprite> dictionary;
+    //public Animation exp_animation;
 
-    public static AnimationClip explosion;
+    //public AnimationClip explosion;
+    public AnimatorController explosionController;
 
-    public static float cellWidth;
-    public static float cellHeight;
+    public float cellWidth;
+    public float cellHeight;
 
     void Awake()
     {
-
-        //foreach (AnimationState state in exp_animation)
-        //{
-        //    state.speed = 0.5F;
-        //}
-        //explosion = exp_animation.clip;
+        MakeSingleton();
 
         dictionary = new Dictionary<string, Sprite>();
         dictionary.Add(RegionNames.MINE, atlas.GetSprite(RegionNames.MINE));
@@ -44,6 +45,20 @@ public class Assets : MonoBehaviour
 
 
     }
+
+    void MakeSingleton()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
 
 
 

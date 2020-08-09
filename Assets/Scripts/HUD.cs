@@ -17,7 +17,7 @@ public class HUD : MonoBehaviour
         points = 0;
         last = Time.time;
         //status_image.GetComponent<Button>().onClick.AddListener(delegate { pause(); });
-        status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
+        status_image.sprite = Assets.instance.dictionary[RegionNames.SMILE_HAPPY];
     }
 
     //void Awake()
@@ -35,15 +35,15 @@ public class HUD : MonoBehaviour
 
         if(GameManager.instance.state == GameManager.GameState.END_LOSE)
         {
-            status_image.sprite = Assets.dictionary[RegionNames.SMILE_DEAD];
+            status_image.sprite = Assets.instance.dictionary[RegionNames.SMILE_DEAD];
         }
         else if (GameManager.instance.state == GameManager.GameState.END_WIN)
         {
-            status_image.sprite = Assets.dictionary[RegionNames.SMILE_WIN];
+            status_image.sprite = Assets.instance.dictionary[RegionNames.SMILE_WIN];
         }
         else
         {
-            status_image.sprite = Assets.dictionary[RegionNames.SMILE_HAPPY];
+            status_image.sprite = Assets.instance.dictionary[RegionNames.SMILE_HAPPY];
             if (GameManager.instance.state == GameManager.GameState.RUNNING)
             {
                 if (Time.time > last + 1f)

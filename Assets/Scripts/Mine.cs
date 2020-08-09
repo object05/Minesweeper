@@ -44,13 +44,17 @@ public class Mine : MonoBehaviour
 
     void Awake()
     {
-        gameObject.AddComponent<Animation>();
-        gameObject.GetComponent<Animation>().clip = Assets.explosion;
+        gameObject.AddComponent<Animator>();
+        //gameObject.GetComponent<Animation>().clip = Assets.instance.explosion;
+        //gameObject.GetComponent<Animator>().AddClip(Assets.instance.explosion,"explosion");
+        gameObject.GetComponent<Animator>().runtimeAnimatorController = Assets.instance.explosionController;
+
+
         gameObject.AddComponent<BoxCollider2D>();
         gameObject.AddComponent<clickDetect>();
         gameObject.tag = "Cell";
         gameObject.AddComponent<SpriteRenderer>();
-        gameObject.GetComponent<SpriteRenderer>().sprite = Assets.dictionary[RegionNames.MINECELL];
+        gameObject.GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL];
         //DontDestroyOnLoad(this);
 
     }
