@@ -6,30 +6,50 @@ using UnityEngine;
 public class CustomAnimator : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-
     public bool busy;
+    public bool working;
 
     public int frameNum;
     public Sprite[] frames;
     public int currentFrame;
-    public float timer;
-    public float framerate =0.01f;
 
-    int switcher;
+    public float interval = 0.1f;
+    float tempTime;
+
+
     // Start is called before the first frame update
     void Awake()
     {
-        switcher = 0;
         busy = false;
+        working = false;
     }
 
-    void Update()//TODO somethings up
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (working)
         {
-            spriteRenderer.sprite = frames[(switcher + 1) % frames.Length];
+            tempTime += Time.deltaTime;
+            if (tempTime > interval)
+            {
+                tempTime = 0;
+                spriteRenderer.sprite = frames[currentFrame];
+                currentFrame++;
+                if(currentFrame >= frames.Length)
+                {
+                    working = false;
+                    busy = false;
+                }
+
+            }
         }
     }
+    public void PlayOnce()
+    {
+        working = true;
+        busy = true;
+        currentFrame = 0;
+    }
+
 
     public void Init(int framesCount)
     {
@@ -39,31 +59,55 @@ public class CustomAnimator : MonoBehaviour
 
     }
 
+    //public void PlayOnce()
+    //{
+    //    bool end = false;
+    //    busy = true;
+    //    float last = 0;
+
+    //    while (!end)
+    //    {
+    //        if (last >= 0.3)
+    //        {
+    //            spriteRenderer.sprite = frames[currentFrame];
+    //            currentFrame++;
+    //            Debug.Log(last+interval+">="+0.3f);
+    //            if (currentFrame >= frames.Length)
+    //            {
+    //                end = true;
+    //            }
+    //            last = 0;
+    //        }
+    //        last += Time.deltaTime;
+    //    }
+    //    busy = false;
+    //}
 
 
 
-    public void PlayOnce()
-    {
-        busy = true;
-        currentFrame = 0;
-        bool end = false;
 
-        while (!end)
-        {
-            timer += Time.deltaTime;
-            if (timer >= framerate)
-            {
-                timer -= framerate;
-                //currentFrame = (currentFrame + 1) % frames.Length;
-                spriteRenderer.sprite = frames[currentFrame];
-                Debug.Log(spriteRenderer.sprite);
-                currentFrame++;
-                if(currentFrame >= frames.Length)
-                {
-                    end = true;
-                }
-            }
-        }
-        busy = false;
-    }
+    //public void PlayOnce()
+    //{
+    //    timer = 0;
+    //    busy = true;
+    //    currentFrame = 0;
+    //    bool end = false;
+
+    //    while (!end)
+    //    {
+    //        timer += Time.deltaTime;
+    //        if (timer >= framerate)
+    //        {
+    //            timer -= framerate;
+    //            spriteRenderer.sprite = frames[currentFrame];
+    //            Debug.Log(spriteRenderer.sprite);
+    //            currentFrame++;
+    //            if(currentFrame >= frames.Length)
+    //            {
+    //                end = true;
+    //            }
+    //        }
+    //    }
+    //    busy = false;
+    //}
 }

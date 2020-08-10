@@ -67,6 +67,10 @@ public class MineFieldRenderer : MonoBehaviour
         {
             for(int y = 0; y < field.height; y++)
             {
+                if (field.minefield[x, y].GetComponent<CustomAnimator>().busy)
+                {
+                    continue;
+                }
                 switch (field.minefield[x, y].GetComponent<Mine>().state)
                 {
                     case Mine.CLICK_OPEN + Mine.MINE_EMPTY:
