@@ -4,6 +4,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
+using EightBitSoundGenerator;
 
 public class Assets : MonoBehaviour
 {
@@ -21,9 +22,14 @@ public class Assets : MonoBehaviour
     public float cellWidth;
     public float cellHeight;
 
+    public Music empty;
+    public Music mine;
     void Awake()
     {
         MakeSingleton();
+        empty = new Music();
+        mine = new Music();
+
 
         dictionary = new Dictionary<string, Sprite>();
         dictionary.Add(RegionNames.MINE, atlas.GetSprite(RegionNames.MINE));

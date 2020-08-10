@@ -54,6 +54,8 @@ public class Mine : MonoBehaviour
         //DontDestroyOnLoad(this);
         gameObject.AddComponent<CustomAnimator>();
 
+
+
     }
 
     void Start()
