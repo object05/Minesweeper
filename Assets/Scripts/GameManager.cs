@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     }
     public GameState state;
 
+    public int boardWidth;
+    public int boardHeight;
+    public int mines;
+    public int minesLeft;
+
 
     void Awake()
     {

@@ -153,12 +153,20 @@ public class MineField : MonoBehaviour
             {
                 obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state & ~Mine.CLICK_MARK;
                 minesLeft++;
+                if (GameManager.instance.minesLeft < GameManager.instance.mines)
+                {
+                    GameManager.instance.minesLeft++;
+                }
                 return false;
             }
             else
             {
                 obj.GetComponent<Mine>().state = obj.GetComponent<Mine>().state | Mine.CLICK_MARK;
                 minesLeft--;
+                if (GameManager.instance.minesLeft > 0)
+                {
+                    GameManager.instance.minesLeft--;
+                }
                 return true;
             }
         }
@@ -225,6 +233,7 @@ public class MineField : MonoBehaviour
             {
                 Assets.instance.empty.Play();
             }
+
             return false;
         }
     }

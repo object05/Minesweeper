@@ -7,14 +7,15 @@ public class HUD : MonoBehaviour
 {
     public Image status_image;
     public Text clock;
+    public Text mines;
     float last;
     public float elapsed;
-    public int points;
 
     void Start()
     {
         elapsed = 0;
-        points = 0;
+        mines.text = GameManager.instance.minesLeft.ToString();
+
         last = Time.time;
         //status_image.GetComponent<Button>().onClick.AddListener(delegate { pause(); });
         status_image.sprite = Assets.instance.dictionary[RegionNames.SMILE_HAPPY];
@@ -27,10 +28,10 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
+        mines.text = GameManager.instance.minesLeft.ToString();
         if (GameManager.instance.state == GameManager.GameState.BEGIN)
         {
             elapsed = 0;
-            points = 0;
         }
 
         if(GameManager.instance.state == GameManager.GameState.END_LOSE)
