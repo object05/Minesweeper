@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 using EightBitSoundGenerator;
+using System.IO;
 
 public class Assets : MonoBehaviour
 {
@@ -24,11 +25,24 @@ public class Assets : MonoBehaviour
 
     public Music empty;
     public Music mine;
+
+
     void Awake()
     {
+
         MakeSingleton();
+
         empty = new Music();
         mine = new Music();
+
+        using (BinaryReader reader = new BinaryReader(File.Open(FilePaths.SOUND_EMPTY, FileMode.Open)))
+        {
+            empty.Load(reader);
+        }
+        using (BinaryReader reader = new BinaryReader(File.Open(FilePaths.SOUND_MINE, FileMode.Open)))
+        {
+            mine.Load(reader);
+        }
 
 
         dictionary = new Dictionary<string, Sprite>();

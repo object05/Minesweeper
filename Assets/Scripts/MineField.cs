@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class MineField : MonoBehaviour
@@ -212,10 +213,18 @@ public class MineField : MonoBehaviour
         {
             Debug.LogWarning("MINE FOUND");
             obj.GetComponent<CustomAnimator>().PlayOnce();
+            if (PlayerPrefs.GetInt("mute") == 0)
+            {
+                Assets.instance.mine.Play();
+            }
             return true;
         }
         else
         {
+            if (PlayerPrefs.GetInt("mute") == 0)
+            {
+                Assets.instance.empty.Play();
+            }
             return false;
         }
     }

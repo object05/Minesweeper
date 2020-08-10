@@ -55,7 +55,6 @@ public class Mine : MonoBehaviour
         gameObject.AddComponent<CustomAnimator>();
 
 
-
     }
 
     void Start()
