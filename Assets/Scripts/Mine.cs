@@ -44,10 +44,6 @@ public class Mine : MonoBehaviour
 
     void Awake()
     {
-        gameObject.AddComponent<Animator>();
-        //gameObject.GetComponent<Animation>().clip = Assets.instance.explosion;
-        //gameObject.GetComponent<Animator>().AddClip(Assets.instance.explosion,"explosion");
-        gameObject.GetComponent<Animator>().runtimeAnimatorController = Assets.instance.explosionController;
 
 
         gameObject.AddComponent<BoxCollider2D>();
@@ -56,7 +52,25 @@ public class Mine : MonoBehaviour
         gameObject.AddComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINECELL];
         //DontDestroyOnLoad(this);
+        gameObject.AddComponent<CustomAnimator>();
 
+    }
+
+    void Start()
+    {
+        CustomAnimator temp = gameObject.GetComponent<CustomAnimator>();
+        temp.Init(10);
+
+        temp.frames[0] = Assets.instance.dictionary[RegionNames.MINEB_0];
+        temp.frames[1] = Assets.instance.dictionary[RegionNames.MINEB_1];
+        temp.frames[2] = Assets.instance.dictionary[RegionNames.MINEB_2];
+        temp.frames[3] = Assets.instance.dictionary[RegionNames.MINEB_3];
+        temp.frames[4] = Assets.instance.dictionary[RegionNames.MINEB_4];
+        temp.frames[5] = Assets.instance.dictionary[RegionNames.MINEB_5];
+        temp.frames[6] = Assets.instance.dictionary[RegionNames.MINEB_6];
+        temp.frames[7] = Assets.instance.dictionary[RegionNames.MINEB_7];
+        temp.frames[8] = Assets.instance.dictionary[RegionNames.MINEB_8];
+        temp.frames[9] = Assets.instance.dictionary[RegionNames.MINEB_9];
     }
 
 

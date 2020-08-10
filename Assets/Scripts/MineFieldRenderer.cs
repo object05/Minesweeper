@@ -102,17 +102,11 @@ public class MineFieldRenderer : MonoBehaviour
                 {
                     if ((field.minefield[x, y].GetComponent<Mine>().state & Mine.MINE) == Mine.MINE)
                     {
-                        if(!isPlaying(field.minefield[x,y].GetComponent<Animator>()))
+                        if (field.minefield[x, y].GetComponent<CustomAnimator>().busy == false)
                         {
                             field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = Assets.instance.dictionary[RegionNames.MINE];//TODO PLAY EXPLOSION AND SOUND HERE
                             continue;
                         }
-                        else
-                        {
-                            field.minefield[x, y].GetComponent<SpriteRenderer>().sprite = null;//TODO PLAY EXPLOSION AND SOUND HERE
-                            continue;
-                        }
-                        //else?
                     }
                 }
 

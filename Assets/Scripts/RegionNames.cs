@@ -22,4 +22,15 @@ public class RegionNames : MonoBehaviour
     public const string SMILE_SCARED = "smile_scared";
     public const string SMILE_WIN = "smile_win";
 
+    public const string MINEB_0 = "mineb_0";
+    public const string MINEB_1 = "mineb_1";
+    public const string MINEB_2 = "mineb_2";
+    public const string MINEB_3 = "mineb_3";
+    public const string MINEB_4 = "mineb_4";
+    public const string MINEB_5 = "mineb_5";
+    public const string MINEB_6 = "mineb_6";
+    public const string MINEB_7 = "mineb_7";
+    public const string MINEB_8 = "mineb_8";
+    public const string MINEB_9 = "mineb_9";
+
 }

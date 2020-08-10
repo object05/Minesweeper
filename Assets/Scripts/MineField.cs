@@ -10,6 +10,7 @@ public class MineField : MonoBehaviour
     public int mines = 10;
     public int minesLeft;
     public GameObject[,] minefield;
+    public GameObject mine;
 
     public float unitDimension;
 
@@ -24,7 +25,9 @@ public class MineField : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 minefield[x, y] = new GameObject();
-                //minefield[x, y].AddComponent<DontDestroy>();
+                //minefield[x, y] = Instantiate(mine);
+
+
                 minefield[x, y].AddComponent<Mine>();
                 minefield[x, y].name = "Cell [" + x + "," + y + "]";
                 minefield[x, y].GetComponent<Mine>().x = x;
@@ -207,8 +210,8 @@ public class MineField : MonoBehaviour
     {
         if(obj.GetComponent<Mine>().state == Mine.MINE)
         {
-            obj.GetComponent<Animator>().Play(0);
             Debug.LogWarning("MINE FOUND");
+            obj.GetComponent<CustomAnimator>().PlayOnce();
             return true;
         }
         else

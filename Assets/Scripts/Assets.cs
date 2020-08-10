@@ -44,6 +44,16 @@ public class Assets : MonoBehaviour
         dictionary.Add(RegionNames.SMILE_WIN, atlas.GetSprite(RegionNames.SMILE_WIN));
 
 
+        dictionary.Add(RegionNames.MINEB_0, atlas.GetSprite(RegionNames.MINEB_0));
+        dictionary.Add(RegionNames.MINEB_1, atlas.GetSprite(RegionNames.MINEB_1));
+        dictionary.Add(RegionNames.MINEB_2, atlas.GetSprite(RegionNames.MINEB_2));
+        dictionary.Add(RegionNames.MINEB_3, atlas.GetSprite(RegionNames.MINEB_3));
+        dictionary.Add(RegionNames.MINEB_4, atlas.GetSprite(RegionNames.MINEB_4));
+        dictionary.Add(RegionNames.MINEB_5, atlas.GetSprite(RegionNames.MINEB_5));
+        dictionary.Add(RegionNames.MINEB_6, atlas.GetSprite(RegionNames.MINEB_6));
+        dictionary.Add(RegionNames.MINEB_7, atlas.GetSprite(RegionNames.MINEB_7));
+        dictionary.Add(RegionNames.MINEB_8, atlas.GetSprite(RegionNames.MINEB_8));
+        dictionary.Add(RegionNames.MINEB_9, atlas.GetSprite(RegionNames.MINEB_9));
     }
 
     void MakeSingleton()
