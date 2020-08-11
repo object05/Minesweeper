@@ -4191,6 +4191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  boardWidth: 0
+  boardHeight: 0
+  mines: 0
+  minesLeft: 0
 --- !u!4 &1541392896
 Transform:
   m_ObjectHideFlags: 0
@@ -4247,8 +4251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status_image: {fileID: 82769432}
   clock: {fileID: 286809677}
+  mines: {fileID: 871360069}
   elapsed: 0
-  points: 0
 --- !u!114 &1541392900
 MonoBehaviour:
   m_ObjectHideFlags: 0

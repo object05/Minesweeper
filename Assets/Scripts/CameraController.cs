@@ -45,6 +45,7 @@ public class CameraController : MonoBehaviour
         {
             Vector3 direction = start - Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Camera.main.transform.position += direction;
+
             if(direction.x != 0 || direction.y != 0)
             {
                 moving = true;
